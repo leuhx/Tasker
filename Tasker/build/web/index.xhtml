@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Tasker</title>
+    </h:head>
+    <h:body>
+        <h1>Tarefas</h1>
+        <h:form id="tarefas">
+                <p:commandButton value="Nova Tarefa" action="/faces/cadastro.xhtml" ajax="false" />
+                <p:dataTable value="#{taskerBean.tarefas}" var="tarefa">
+                    <p:column headerText="id" sortBy="#{tarefa.id}">
+                    <h:outputText value="#{tarefa.id}"></h:outputText>
+                </p:column>    
+                <p:column headerText="Titulo" sortBy="#{tarefa.titulo}">
+                    <h:outputText value="#{tarefa.titulo}"></h:outputText>
+                </p:column>
+                <p:column headerText="Descriçao">
+                    <h:outputText value="#{tarefa.descricao}"></h:outputText>
+                </p:column>
+                <p:column headerText="Responsavel" sortBy="#{tarefa.responsavel}">
+                    <h:outputText value="#{tarefa.responsavel}"></h:outputText>
+                </p:column>
+                <p:column headerText="Prioridade" sortBy="#{tarefa.prioridade}">
+                    <h:outputText value="#{tarefa.prioridade}"></h:outputText>
+                </p:column>
+                <p:column headerText="Deadline" sortBy="#{tarefa.deadline}">
+                    <h:outputText value="#{tarefa.deadline}"></h:outputText>
+                </p:column>
+                <p:column headerText="Status" sortBy="#{tarefa.status}">
+                    <h:outputText value="#{tarefa.status}"></h:outputText>
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Editar" action="/faces/cadastro.xhtml" update="@form">
+                        <f:actionListener binding="#{taskerBean.editar(tarefa)}" />
+                    </p:commandButton>
+                    <p:commandButton value="Excluir" action="#{taskerBean.apagar(tarefa)}" update="@form"></p:commandButton>
+                    
+                </p:column>                
+            </p:dataTable>
+            
+        </h:form>
+        
+    </h:body>
+</html>
+

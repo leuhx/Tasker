@@ -1,0 +1,2 @@
+CREATE TABLE tarefas(id serial NOT NULL, titulo varchar, descricao varchar, responsavel varchar, prioridade varchar, deadline varchar);
+
